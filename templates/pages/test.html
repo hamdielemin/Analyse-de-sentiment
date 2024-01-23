@@ -1,0 +1,53 @@
+
+
+{% extends "layouts/default.html" %}
+<heade>
+
+</heade>
+	
+	   {% block head %}
+ <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet" >
+
+
+
+{% endblock %}
+	{% block body %}
+
+
+    <div class="text-center">
+
+     <h1 class="mt-5">Seisir votre texte</h1>
+
+    <form id="textForm" class="mt-4" action="/resultat" method="post">
+        <textarea id="userText" name="userText" rows="4" cols="50" class="form-control"></textarea><br><br>
+        <button type="submit" class="btn btn-primary" style="background-color: #e3f2fd; color: #1a1d20;">Analyser</button>
+        <button class="btn btn-primary" style="background-color: #e3f2fd; color: #1a1d20; " ><a class="nav-link " href="{{ url_for('upload_file') }}">Sélectionnez un fichier</a></button>
+
+    </form>
+
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+    function sendText() {
+        // Récupérer le texte de l'utilisateur depuis la zone de texte
+        var userText = document.getElementById("userText").value;
+
+        // Utiliser fetch pour envoyer le texte à la route Flask
+        fetch("/resultat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ text: userText }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Mettre à jour le contenu de la div résultat avec la réponse
+            document.getElementById("result").innerHTML = `<p><strong>${data.prediction}</strong></p>`;
+        })
+        .catch(error => console.error('Erreur lors de la requête fetch :', error));
+    }
+</script>
+   {% endblock %}

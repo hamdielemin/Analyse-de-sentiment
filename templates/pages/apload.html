@@ -1,0 +1,23 @@
+{% extends "layouts/default.html" %}
+{% block head %}
+    <style>
+        .center-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        </style>
+{% endblock %}
+{% block body %}
+    <div class="center-div">
+     <form action="/test_file" method="post" enctype="multipart/form-data" class="mt-5">
+            <label for="fileInput" class="form-label">Sélectionnez un fichier texte :</label>
+            <input type="file" id="fileInput" name="file" accept=".txt" class="form-control">
+            <button type="submit" class="btn btn-primary mt-3">Envoyer</button>
+        </form>
+    </form>
+    </div>
+{% endblock %}

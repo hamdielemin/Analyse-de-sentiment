@@ -1,0 +1,28 @@
+
+<nav class="navbar" style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <a class="navbar-brand"><h2>Analyse de sentiment</h2></a>
+      <ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link " aria-current="page" href="{{ url_for('hello_world') }}">Accueil</a>
+  </li>
+
+{#  <li class="nav-item">#}
+{#    <a class="nav-link disabled" href="#">Link</a>#}
+{#  </li>#}
+  <li class="nav-item">
+    <a class="nav-link " href="{{ url_for('tester') }}">Text</a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link " href="{{ url_for('about_page') }}">description</a>
+  </li>
+</ul>
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+
+    </form>
+  </div>
+</nav>
+
+
